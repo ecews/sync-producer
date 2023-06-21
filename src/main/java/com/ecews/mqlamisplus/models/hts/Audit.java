@@ -37,10 +37,9 @@ public class Audit<U>
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(name = "date_created", nullable = false, updatable = false)
-    @JsonIgnore
     @ToString.Exclude
     @CreatedDate
-    private LocalDateTime dateCreated ;
+    private LocalDateTime dateCreated = LocalDateTime.now ();;
 
 
 
@@ -56,8 +55,7 @@ public class Audit<U>
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(name = "date_modified")
-    @JsonIgnore
     @ToString.Exclude
     @LastModifiedDate
-    private LocalDateTime dateModified;
+    private LocalDateTime dateModified = LocalDateTime.now ();;
 }

@@ -109,6 +109,75 @@ public class MessagingConfig {
     public static final String HTSCLIENTROUTINGKEY = "hts_client_routing_key";
 
 
+
+
+    public static final String RISKSTRATIFICATIONQUEUE = "risk_stratification_queue";
+    public static final String RISKSTRATIFICATIONEXCHANGE = "risk_stratification_exchange";
+    public static final String RISKSTRATIFICATIONROUTINGKEY = "risk_stratification_key";
+
+
+    public static final String LABORDERQUEUE = "lab_order_queue";
+    public static final String LABORDEREXCHANGE = "lab_order_exchange";
+    public static final String LABORDERROUTINGKEY = "lab_order_key";
+
+
+
+    public static final String RESULTQUEUE = "result_queue";
+    public static final String RESULTEXCHANGE = "result_exchange";
+    public static final String RESULTROUTINGKEY = "result_key";
+
+
+
+    public static final String SAMPLEQUEUE = "sample_queue";
+    public static final String SAMPLEEXCHANGE = "sample_exchange";
+    public static final String SAMPLEROUTINGKEY = "sample_key";
+
+
+
+    public static final String TESTQUEUE = "test_queue";
+    public static final String TESTEXCHANGE = "test_exchange";
+    public static final String TESTROUTINGKEY = "test_key";
+
+
+    public static final String LIMSMANIFESTQUEUE = "lims_manifest_queue";
+    public static final String LIMSMANIFESTEXCHANGE = "lims_manifest_exchange";
+    public static final String LIMSMANIFESTROUTINGKEY = "lims_manifest_key";
+
+
+
+    public static final String LIMSSAMPLEQUEUE = "lims_sample_queue";
+    public static final String LIMSSAMPLEEXCHANGE = "lims_sample_exchange";
+    public static final String LIMSSAMPLEROUTINGKEY = "lims_sample_key";
+
+
+
+    public static final String LIMSRESULTQUEUE = "lims_result_queue";
+    public static final String LIMSRESULTEXCHANGE = "lims_result_exchange";
+    public static final String LIMSRESULTROUTINGKEY = "lims_result_key";
+
+
+    public static final String ANCQUEUE = "anc_queue";
+    public static final String ANCEXCHANGE = "anc_exchange";
+    public static final String ANCROUTINGKEY = "anc_result_key";
+
+
+    public static final String DELIVERYQUEUE = "delivery_queue";
+    public static final String DELIVERYEXCHANGE = "delivery_exchange";
+    public static final String DELIVERYROUTINGKEY = "delivery_key";
+
+    public static final String PMTCTQUEUE = "pmtct_queue";
+    public static final String PMTCTEXCHANGE = "pmtct_exchange";
+    public static final String PMTCTROUTINGKEY = "pmtct_key";
+
+
+
+    public static final String INFANTARVQUEUE = "infant_arv_queue";
+    public static final String INFANTARVEXCHANGE = "infant_arv_exchange";
+    public static final String INFANTARVROUTINGKEY = "infant_arv_key";
+
+
+
+
     @Bean
     public Queue queue(){
 
@@ -528,6 +597,360 @@ public class MessagingConfig {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    @Bean
+    public Queue riskStratificationQueue(){
+
+        return new Queue(RISKSTRATIFICATIONQUEUE);
+    }
+
+    @Bean
+    public TopicExchange riskStratificationExchange(){
+
+        return new TopicExchange(RISKSTRATIFICATIONEXCHANGE);
+    }
+
+    @Bean
+    public Binding riskStratificationBinding(Queue riskStratificationQueue, TopicExchange riskStratificationExchange){
+
+        return BindingBuilder.bind(riskStratificationQueue).to(riskStratificationExchange).with(RISKSTRATIFICATIONROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    @Bean
+    public Queue labOrderQueue(){
+
+        return new Queue(LABORDERQUEUE);
+    }
+
+    @Bean
+    public TopicExchange labOrderExchange(){
+
+        return new TopicExchange(LABORDEREXCHANGE);
+    }
+
+    @Bean
+    public Binding labOrderBinding(Queue labOrderQueue, TopicExchange labOrderExchange){
+
+        return BindingBuilder.bind(labOrderQueue).to(labOrderExchange).with(LABORDERROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+    @Bean
+    public Queue resultQueue(){
+
+        return new Queue(RESULTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange resultExchange(){
+
+        return new TopicExchange(RESULTEXCHANGE);
+    }
+
+    @Bean
+    public Binding resultBinding(Queue resultQueue, TopicExchange resultExchange){
+
+        return BindingBuilder.bind(resultQueue).to(resultExchange).with(RESULTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+    @Bean
+    public Queue sampleQueue(){
+
+        return new Queue(SAMPLEQUEUE);
+    }
+
+    @Bean
+    public TopicExchange sampleExchange(){
+
+        return new TopicExchange(SAMPLEEXCHANGE);
+    }
+
+    @Bean
+    public Binding sampleBinding(Queue sampleQueue, TopicExchange sampleExchange){
+
+        return BindingBuilder.bind(sampleQueue).to(sampleExchange).with(SAMPLEROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    @Bean
+    public Queue testQueue(){
+
+        return new Queue(TESTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange testExchange(){
+
+        return new TopicExchange(TESTEXCHANGE);
+    }
+
+    @Bean
+    public Binding testBinding(Queue testQueue, TopicExchange testExchange){
+
+        return BindingBuilder.bind(testQueue).to(testExchange).with(TESTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    @Bean
+    public Queue limsManifestQueue(){
+
+        return new Queue(LIMSMANIFESTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange limsManifestExchange(){
+
+        return new TopicExchange(LIMSMANIFESTEXCHANGE);
+    }
+
+    @Bean
+    public Binding limsManifestBinding(Queue limsManifestQueue, TopicExchange limsManifestExchange){
+
+        return BindingBuilder.bind(limsManifestQueue).to(limsManifestExchange).with(LIMSMANIFESTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+    @Bean
+    public Queue limsSampleQueue(){
+
+        return new Queue(LIMSSAMPLEQUEUE);
+    }
+
+    @Bean
+    public TopicExchange limsSampleExchange(){
+
+        return new TopicExchange(LIMSSAMPLEEXCHANGE);
+    }
+
+    @Bean
+    public Binding limsSampleBinding(Queue limsSampleQueue, TopicExchange limsSampleExchange){
+
+        return BindingBuilder.bind(limsSampleQueue).to(limsSampleExchange).with(LIMSSAMPLEROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+    @Bean
+    public Queue limsResultQueue(){
+
+        return new Queue(LIMSRESULTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange limsResultExchange(){
+
+        return new TopicExchange(LIMSSAMPLEEXCHANGE);
+    }
+
+    @Bean
+    public Binding limsResultBinding(Queue limsResultQueue, TopicExchange limsResultExchange){
+
+        return BindingBuilder.bind(limsResultQueue).to(limsResultExchange).with(LIMSRESULTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    @Bean
+    public Queue ancQueue(){
+
+        return new Queue(ANCQUEUE);
+    }
+
+    @Bean
+    public TopicExchange ancExchange(){
+
+        return new TopicExchange(ANCEXCHANGE);
+    }
+
+    @Bean
+    public Binding ancBinding(Queue ancQueue, TopicExchange ancExchange){
+
+        return BindingBuilder.bind(ancQueue).to(ancExchange).with(ANCROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+    @Bean
+    public Queue deliveryQueue(){
+
+        return new Queue(DELIVERYQUEUE);
+    }
+
+    @Bean
+    public TopicExchange deliveryExchange(){
+
+        return new TopicExchange(DELIVERYEXCHANGE);
+    }
+
+    @Bean
+    public Binding deliveryBinding(Queue deliveryQueue, TopicExchange deliveryExchange){
+
+        return BindingBuilder.bind(deliveryQueue).to(deliveryExchange).with(DELIVERYROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    @Bean
+    public Queue pmtctQueue(){
+
+        return new Queue(PMTCTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange pmtctExchange(){
+
+        return new TopicExchange(PMTCTEXCHANGE);
+    }
+
+    @Bean
+    public Binding pmtctBinding(Queue pmtctQueue, TopicExchange pmtctExchange){
+
+        return BindingBuilder.bind(pmtctQueue).to(pmtctExchange).with(PMTCTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    @Bean
+    public Queue infantArvQueue(){
+
+        return new Queue(INFANTARVQUEUE);
+    }
+
+    @Bean
+    public TopicExchange infantArvExchange(){
+
+        return new TopicExchange(INFANTARVEXCHANGE);
+    }
+
+    @Bean
+    public Binding infantaArvBinding(Queue infantArvQueue, TopicExchange infantArvExchange){
+
+        return BindingBuilder.bind(infantArvQueue).to(infantArvExchange).with(INFANTARVROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 
     @Bean

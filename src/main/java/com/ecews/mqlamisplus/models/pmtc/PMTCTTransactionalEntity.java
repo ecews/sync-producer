@@ -1,8 +1,7 @@
-package com.ecews.mqlamisplus.models.biometric;
+package com.ecews.mqlamisplus.models.pmtc;
 
 import com.ecews.mqlamisplus.utility.LocalDateTimeDeserializer;
 import com.ecews.mqlamisplus.utility.LocalDateTimeSerializer;
-import com.ecews.mqlamisplus.utility.SecurityUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -12,62 +11,78 @@ import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
 import com.vladmihalcea.hibernate.type.json.JsonNodeStringType;
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import javax.persistence.*;
+
 import lombok.Data;
-import lombok.ToString;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import java.time.LocalDateTime;
+import org.springframework.data.domain.Persistable;
 
 @MappedSuperclass
+@TypeDefs({@TypeDef(
+        name = "string-array",
+        typeClass = StringArrayType.class
+), @TypeDef(
+        name = "int-array",
+        typeClass = IntArrayType.class
+), @TypeDef(
+        name = "json",
+        typeClass = JsonStringType.class
+), @TypeDef(
+        name = "jsonb",
+        typeClass = JsonBinaryType.class
+), @TypeDef(
+        name = "jsonb-node",
+        typeClass = JsonNodeBinaryType.class
+), @TypeDef(
+        name = "json-node",
+        typeClass = JsonNodeStringType.class
+)})
 @Data
-@TypeDefs({
-        @TypeDef(name = "string-array", typeClass = StringArrayType.class),
-        @TypeDef(name = "int-array", typeClass = IntArrayType.class),
-        @TypeDef(name = "json", typeClass = JsonStringType.class),
-        @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
-        @TypeDef(name = "jsonb-node", typeClass = JsonNodeBinaryType.class),
-        @TypeDef(name = "json-node", typeClass = JsonNodeStringType.class),
-})
-public class BiometricAuditEntity {
+public class PMTCTTransactionalEntity implements Serializable, Persistable<Long> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+    private String hospitalNumber;
+    private String uuid;
+    private String ancNo;
+
+
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(name = "created_date", updatable = false)
     @CreatedDate
-    private LocalDateTime createdDate ;
+    private LocalDateTime createdDate = LocalDateTime.now();
+
+
 
     @JsonIgnore
-    @ToString.Exclude
     @Column(name = "created_by", updatable = false)
-    private String createdBy = SecurityUtils.getCurrentUserLogin ().orElse ("");
+    private String createdBy;
 
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(name = "last_modified_date")
     @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+    private LocalDateTime lastModifiedDate = LocalDateTime.now();
+
 
 
     @Column(name = "last_modified_by")
     @JsonIgnore
-    @ToString.Exclude
-    private String lastModifiedBy = SecurityUtils.getCurrentUserLogin ().orElse ("");
-
+    private String lastModifiedBy;
     private Long facilityId;
 
-    @PrePersist
-    @PreUpdate
-    public void update() {
-        lastModifiedDate = LocalDateTime.now ();
-        lastModifiedBy = SecurityUtils.getCurrentUserLogin ().orElse ("");
+    @Override
+    public boolean isNew() {
+        return id == null;
     }
 }
-
