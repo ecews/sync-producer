@@ -1,7 +1,6 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.Repository.hivrepo.HtsClientRepo;
-import com.ecews.mqlamisplus.Repository.hivrepo.IndexElicitationRepo;
+import com.ecews.mqlamisplus.Repository.hts.HtsClientRepo;
 import com.ecews.mqlamisplus.models.hts.HtsClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

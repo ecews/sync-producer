@@ -3,14 +3,24 @@ package com.ecews.mqlamisplus;
 import com.ecews.mqlamisplus.Repository.PersonRepo.PersonRepo;
 import com.ecews.mqlamisplus.Repository.hivrepo.ArtClinicalRepo;
 import com.ecews.mqlamisplus.Repository.hivrepo.HIVStatusTrackerRepo;
-import com.ecews.mqlamisplus.Repository.hivrepo.HtsClientRepo;
+import com.ecews.mqlamisplus.Repository.hts.HtsClientRepo;
+import com.ecews.mqlamisplus.Repository.lims.LIMManifestSRepo;
+import com.ecews.mqlamisplus.Repository.pmtc.PmtctEnrollmentRepo;
 import com.ecews.mqlamisplus.config.MessagingConfig;
 
-import com.ecews.mqlamisplus.models.hiv.*;
-import com.ecews.mqlamisplus.models.hiv.HIVEac;
-import com.ecews.mqlamisplus.models.hts.HtsClient;
 import com.ecews.mqlamisplus.models.hts.IndexElicitation;
-import com.ecews.mqlamisplus.models.triage.VitalSign;
+import com.ecews.mqlamisplus.models.hts.RiskStratification;
+import com.ecews.mqlamisplus.models.laboratory.LabOrder;
+import com.ecews.mqlamisplus.models.laboratory.Result;
+import com.ecews.mqlamisplus.models.laboratory.Sample;
+import com.ecews.mqlamisplus.models.laboratory.Test;
+import com.ecews.mqlamisplus.models.lims.LIMSManifest;
+import com.ecews.mqlamisplus.models.lims.LIMSResult;
+import com.ecews.mqlamisplus.models.lims.LIMSSample;
+import com.ecews.mqlamisplus.models.pmtc.ANC;
+import com.ecews.mqlamisplus.models.pmtc.Delivery;
+import com.ecews.mqlamisplus.models.pmtc.InfantArv;
+import com.ecews.mqlamisplus.models.pmtc.PMTCTEnrollment;
 import com.ecews.mqlamisplus.service.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +31,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManagerFactory;
 
-import com.ecews.mqlamisplus.models.hiv.ARTClinical;
 import java.util.List;
 
 
@@ -101,6 +110,44 @@ public class MqlamisplusApplication implements ApplicationRunner {
 
 	@Autowired
 	private HtsClientService htsClientService;
+
+	@Autowired
+	private RiskStratificationService riskStratificationService;
+
+	@Autowired
+	private LabOrderService labOrderService;
+
+	@Autowired
+	private ResultService resultService;
+
+	@Autowired
+	private SampleService sampleService;
+
+	@Autowired
+	private TestService testService;
+
+	@Autowired
+	private LIMSManifestService limsManifestService;
+
+	@Autowired
+	private LIMSSampleService limManifestService;
+
+	@Autowired
+	private LIMSResultService limsResultService;
+
+
+	@Autowired
+	private AncService ancService;
+
+	@Autowired
+	private DeliveryService deliveryService;
+
+	@Autowired
+	private PmtctEnrollmentService pmtctEnrollmentService;
+
+	@Autowired
+	private InfantArvService infantArvService;
+
 
 
 
@@ -471,27 +518,291 @@ public class MqlamisplusApplication implements ApplicationRunner {
 //
 //			System.out.println(">>>>>>>>>>>>> IndexElicitation is being Printed " +indexElicitation.getUuid());
 //		}
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//		List<HtsClient> htsClients = htsClientService.gethtsClientFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ htsClients.size()+ " IndexElicitation in the Db");
+//		// Do something with the retrieved persons
+//		for (HtsClient htsClient : htsClients) {
+//			System.out.println(">>>>>>>>>>>>> HtsClient is being Printed" +htsClient.getUuid());
+//		}
+//
+//		for (HtsClient htsClient : htsClients) {
+//
+//			template.convertAndSend(MessagingConfig.HTSCLIENTEXCHANGE, MessagingConfig.HTSCLIENTROUTINGKEY,htsClient);
+//
+//			System.out.println(">>>>>>>>>>>>> HtsClient is Queing now " +htsClient.getUuid());
+//		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//
+//
+//		List<RiskStratification> riskStratifications = riskStratificationService.getRiskStratificationFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ riskStratifications.size()+ " RiskStratification in the Db");
+//		// Do something with the retrieved persons
+//		for (RiskStratification riskStratification : riskStratifications) {
+//			System.out.println(">>>>>>>>>>>>> RiskStratification is being Printed" +riskStratification.getId());
+//		}
+//
+//		for (RiskStratification riskStratification : riskStratifications) {
+//
+//			template.convertAndSend(MessagingConfig.RISKSTRATIFICATIONEXCHANGE, MessagingConfig.RISKSTRATIFICATIONROUTINGKEY,riskStratification);
+//
+//			System.out.println(">>>>>>>>>>>>> RiskStratification is being Printed " +riskStratification.getId());
+//		}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		List<HtsClient> htsClients = htsClientService.gethtsClientFromLamisPlusDb();
 
 
 
-		System.out.println("There are "+ htsClients.size()+ " IndexElicitation in the Db");
-		// Do something with the retrieved persons
-		for (HtsClient htsClient : htsClients) {
-			System.out.println(">>>>>>>>>>>>> HtsClient is being Printed" +htsClient.getUuid());
+//		List<LabOrder> labOrders = labOrderService.getLabOrderFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ labOrders.size()+ " LabOrder in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (LabOrder labOrder : labOrders) {
+//			System.out.println(">>>>>>>>>>>>> LabOrder is being Printed" +labOrder.getId());
+//		}
+//
+//		for (LabOrder labOrder : labOrders) {
+//
+//			template.convertAndSend(MessagingConfig.LABORDEREXCHANGE, MessagingConfig.LABORDERROUTINGKEY,labOrder);
+//
+//			System.out.println(">>>>>>>>>>>>> LabOrder is being Printed " +labOrder.getId());
+//		}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//
+//		List<Result> results = resultService.getResultsFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ results.size()+ " Result in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (Result result : results) {
+//			System.out.println(">>>>>>>>>>>>> Result is being Printed" +result.getId());
+//		}
+//
+//		for (Result result : results) {
+//
+//			template.convertAndSend(MessagingConfig.RESULTEXCHANGE, MessagingConfig.RESULTROUTINGKEY,result);
+//
+//			System.out.println(">>>>>>>>>>>>> Result is being Printed " +result.getId());
+//		}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//		List<Sample> samples = sampleService.getSampleFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ samples.size()+ " Result in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (Sample sample : samples) {
+//			System.out.println(">>>>>>>>>>>>> Sample is being Printed" +sample.getUuid());
+//		}
+//
+//		for (Sample sample : samples) {
+//
+//			template.convertAndSend(MessagingConfig.SAMPLEEXCHANGE, MessagingConfig.SAMPLEROUTINGKEY,sample);
+//
+//			System.out.println(">>>>>>>>>>>>> Result is being Printed " +sample.getUuid());
+//		}
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
+//
+//		List<Test> tests = testService.getTestFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ tests.size()+ " Test in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (Test test : tests) {
+//			System.out.println(">>>>>>>>>>>>> Test is being Printed" +test.getUuid());
+//		}
+//
+//		for (Test test : tests) {
+//
+//			template.convertAndSend(MessagingConfig.TESTEXCHANGE, MessagingConfig.TESTROUTINGKEY,test);
+//
+//			System.out.println(">>>>>>>>>>>>> Test is being Printed " +test.getUuid());
+//		}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//		List<LIMSManifest> limsManifests = limsManifestService.getLIMSManifestFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ limsManifests.size()+ " LIMSManifest in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (LIMSManifest limsManifest : limsManifests) {
+//			System.out.println(">>>>>>>>>>>>> LIMSManifest is being Printed" +limsManifest.getUuid());
+//		}
+//
+//		for (LIMSManifest limsManifest : limsManifests) {
+//
+//			template.convertAndSend(MessagingConfig.LIMSMANIFESTEXCHANGE, MessagingConfig.LIMSMANIFESTROUTINGKEY,limsManifest);
+//
+//			System.out.println(">>>>>>>>>>>>> LIMSManifest is being Printed " +limsManifest.getUuid());
+//		}
+
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//		List<LIMSSample> limsSamples = limManifestService.getLIMSSampleFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ limsSamples.size()+ " LIMSManifest in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (LIMSSample limsSample : limsSamples) {
+//			System.out.println(">>>>>>>>>>>>> LIMSSample is being Printed" +limsSample.getUuid());
+//		}
+//
+//		for (LIMSSample limsSample : limsSamples) {
+//
+//			template.convertAndSend(MessagingConfig.LIMSSAMPLEEXCHANGE, MessagingConfig.LIMSSAMPLEROUTINGKEY,limsSample);
+//
+//			System.out.println(">>>>>>>>>>>>> LIMSManifest is being Printed " +limsSample.getUuid());
+//		}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
+//		List<LIMSResult> limsResults = limsResultService.getLIMSResultFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ limsResults.size()+ " LIMSResult in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (LIMSResult limsResult : limsResults) {
+//			System.out.println(">>>>>>>>>>>>> LIMSResult is being Printed" +limsResult.getUuid());
+//		}
+//
+//		for (LIMSResult limsResult : limsResults) {
+//
+//			template.convertAndSend(MessagingConfig.LIMSRESULTEXCHANGE, MessagingConfig.LIMSRESULTROUTINGKEY,limsResult);
+//
+//			System.out.println(">>>>>>>>>>>>> LIMSResult is being Printed " +limsResult.getUuid());
+//		}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//		List<ANC> ancs = ancService.getAncFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ ancs.size()+ " ANC in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (ANC anc : ancs) {
+//			System.out.println(">>>>>>>>>>>>> ANC is being Printed" +anc.getUuid());
+//		}
+//
+//		for (ANC anc : ancs) {
+//
+//			template.convertAndSend(MessagingConfig.ANCEXCHANGE, MessagingConfig.ANCROUTINGKEY,anc);
+//
+//			System.out.println(">>>>>>>>>>>>> ANC is being Printed " +anc.getUuid());
+//		}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<Delivery> deliveries = deliveryService.getDeliveryFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ deliveries.size()+ " Delivery in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (Delivery delivery : deliveries) {
+//			System.out.println(">>>>>>>>>>>>> Delivery is being Printed" +delivery.getUuid());
+//		}
+//
+//		for (Delivery delivery : deliveries)  {
+//
+//			template.convertAndSend(MessagingConfig.DELIVERYEXCHANGE, MessagingConfig.DELIVERYROUTINGKEY,delivery);
+//
+//			System.out.println(">>>>>>>>>>>>> Delivery is being Printed " +delivery.getUuid());
+//		}
+
+
+//		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<PMTCTEnrollment> pmtctEnrollments = pmtctEnrollmentService.getPmtctFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ pmtctEnrollments.size()+ " PMTCTEnrollment in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PMTCTEnrollment pmtctEnrollment : pmtctEnrollments) {
+//			System.out.println(">>>>>>>>>>>>> PMTCTEnrollment is being Printed" +pmtctEnrollment.getUuid());
+//		}
+//
+//		for (PMTCTEnrollment pmtctEnrollment : pmtctEnrollments){
+//
+//			template.convertAndSend(MessagingConfig.PMTCTEXCHANGE, MessagingConfig.PMTCTROUTINGKEY,pmtctEnrollment);
+//
+//			System.out.println(">>>>>>>>>>>>> PMTCTEnrollment is being Printed " +pmtctEnrollment.getUuid());
+//		}
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		List<InfantArv> infantArvs = infantArvService.getInfantArvLamisPlusDb();
+
+
+
+		System.out.println("There are "+ infantArvs.size()+ " InfantArv in the Db");
+		// Do something with the retrieved LabOrders
+		for (InfantArv infantArv : infantArvs) {
+
+			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed" +infantArv.getUuid());
 		}
 
-		for (HtsClient htsClient : htsClients) {
+		for (InfantArv infantArv : infantArvs){
 
-			template.convertAndSend(MessagingConfig.HTSCLIENTEXCHANGE, MessagingConfig.HTSCLIENTROUTINGKEY,htsClient);
+			template.convertAndSend(MessagingConfig.INFANTARVEXCHANGE, MessagingConfig.INFANTARVROUTINGKEY,infantArv);
 
-			System.out.println(">>>>>>>>>>>>> HtsClient is Queing now " +htsClient.getUuid());
+			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed " +infantArv.getUuid());
 		}
-
-
 	}
 
 

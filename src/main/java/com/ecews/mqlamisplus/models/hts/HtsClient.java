@@ -1,6 +1,8 @@
 package com.ecews.mqlamisplus.models.hts;
 
+import com.ecews.mqlamisplus.models.PatientAuditEntity;
 import com.ecews.mqlamisplus.models.Person.Person;
+import com.ecews.mqlamisplus.models.biometric.BiometricAuditEntity;
 import com.ecews.mqlamisplus.utility.LocalDateDeserializer;
 import com.ecews.mqlamisplus.utility.LocalDateSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -275,10 +277,17 @@ public class HtsClient extends Audit implements Serializable {
     @Column(name = "index_notification_services_elicitation", columnDefinition = "jsonb")
     private Object indexNotificationServicesElicitation;
 
+
+
+
+
     @OneToMany(mappedBy = "htsClient")
     @ToString.Exclude
     @JsonIgnore
     public List<IndexElicitation> indexElicitation;
+
+
+
 
     @OneToOne
     @JoinColumn(name = "risk_stratification_code", referencedColumnName = "code", insertable = false, updatable = false)

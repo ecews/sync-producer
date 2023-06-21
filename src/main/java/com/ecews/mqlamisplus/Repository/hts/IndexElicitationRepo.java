@@ -1,4 +1,4 @@
-package com.ecews.mqlamisplus.Repository.hivrepo;
+package com.ecews.mqlamisplus.Repository.hts;
 
 import com.ecews.mqlamisplus.models.hts.IndexElicitation;
 import org.springframework.data.jpa.repository.JpaRepository;
