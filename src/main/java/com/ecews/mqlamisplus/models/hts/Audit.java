@@ -27,9 +27,10 @@ import java.time.LocalDateTime;
 public class Audit<U>
 
 {
+
+
     @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false)
-    @JsonIgnore
     @ToString.Exclude
     private String createdBy = SecurityUtils.getCurrentUserLogin().orElse(null);
 

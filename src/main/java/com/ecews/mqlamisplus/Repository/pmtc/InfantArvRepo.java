@@ -1,4 +1,4 @@
-package com.ecews.mqlamisplus.Repository;
+package com.ecews.mqlamisplus.Repository.pmtc;
 
 
 import com.ecews.mqlamisplus.models.pmtc.InfantArv;

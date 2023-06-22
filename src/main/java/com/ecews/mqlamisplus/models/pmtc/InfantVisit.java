@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.models.pmtc;
 
-import com.ecews.mqlamisplus.utility.LocalDateDeserializer;
-import com.ecews.mqlamisplus.utility.LocalDateSerializer;
+import com.ecews.mqlamisplus.utility.LocalDateTimeDeserializer;
+import com.ecews.mqlamisplus.utility.LocalDateTimeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
@@ -13,28 +13,29 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "pmtct_infant_arv",  schema = "public")
+@Table(name = "pmtct_infant_visit",  schema = "public")
 @Data
 @NoArgsConstructor
-public class InfantArv implements Serializable, Persistable<Long>
-{
-    @Id
+
+public class InfantVisit implements Serializable, Persistable<Long>{
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDate visitDate;
 
 
     private String infantHospitalNumber;
     private String ancNumber;
-    private String infantArvType;
-    private String infantArvTime;
-    private String arvDeliveryPoint;
+    private Long bodyWeight;
+    private String visitStatus;
+    private String ctxStatus;
+    private String breastFeeding ;
     private String uuid;
-    private String ageAtCtx;
+
 
     @Override
     public boolean isNew() {

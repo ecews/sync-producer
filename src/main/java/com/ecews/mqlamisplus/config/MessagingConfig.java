@@ -26,6 +26,14 @@ public class MessagingConfig {
     public static final String PATIENTROUTING_KEY="patient_routing_key";
 
 
+
+
+    public static final String PATIENTENCOUNTEREXCHANGE = "patient_encounter_exchange";
+    public static final String PATIENTENCOUNTERQUEUE ="patient_encounter_queue";
+    public static final String PATIENTENCOUNTERROUTING_KEY="patient_encounter_routing_key";
+
+
+
     public static final String BIOMETRICEXCHANGE = "biometric_exchange";
     public static final String BIOMETRICQUEUE ="biometric_queue";
     public static final String BIOMETRICROUTING_KEY ="biometric_routing_key";
@@ -174,6 +182,43 @@ public class MessagingConfig {
     public static final String INFANTARVQUEUE = "infant_arv_queue";
     public static final String INFANTARVEXCHANGE = "infant_arv_exchange";
     public static final String INFANTARVROUTINGKEY = "infant_arv_key";
+
+
+    public static final String INFANTMOTHERARTQUEUE = "infant_mother_art_queue";
+    public static final String INFANTMOTHERARTEXCHANGE = "infant_mother_art_exchange";
+    public static final String INFANTMOTHERARTROUTINGKEY = "infant_mother_art_key";
+
+    public static final String INFANTPCRTESTQUEUE = "infant_pcr_test_queue";
+    public static final String INFANTPCRTESTEXCHANGE = "infant_pcr_test_exchange";
+    public static final String INFANTPCRTESTROUTINGKEY = "infant_pcr_test_key";
+
+
+    public static final String INFANTVISITQUEUE = "infant_visit_queue";
+    public static final String INFANTVISITEXCHANGE = "infant_visit_exchange";
+    public static final String INFANTVISITROUTINGKEY = "infant_visit_key";
+
+    public static final String PMTCTVISITQUEUE = "pmtct_visit_queue";
+    public static final String PMTCTVISITEXCHANGE = "pmtct_visit_exchange";
+    public static final String PMTCTVISITROUTINGKEY = "pmtct_visit_key";
+
+
+    public static final String PREPELIGIBILITYQUEUE = "prep_eligibility_queue";
+    public static final String PREPELIGIBILITYEXCHANGE = "prep_eligibility_exchange";
+    public static final String PREPELIGIBILITYROUTINGKEY = "prep_eligibility_key";
+
+
+    public static final String PREPENROLLMENTQUEUE = "prep_enrollment_queue";
+    public static final String PREPENROLLMENTEXCHANGE = "prep_enrollment_exchange";
+    public static final String PREPENROLLMENTROUTINGKEY = "prep_enrollment_key";
+
+
+    public static final String PREPCLINICQUEUE = "prep_clinic_queue";
+    public static final String PREPCLINICEXCHANGE = "prep_clinic_exchange";
+    public static final String PREPCLINICROUTINGKEY = "prep_clinic_key";
+
+    public static final String PREPINTERRUPTIONQUEUE = "prep_interruption_queue";
+    public static final String PREPINTERRUPTIONEXCHANGE = "prep_interruption_exchange";
+    public static final String PREPINTERRUPTIONROUTINGKEY = "prep_interruption_key";
 
 
 
@@ -461,9 +506,6 @@ public class MessagingConfig {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 
 
     @Bean
@@ -946,11 +988,254 @@ public class MessagingConfig {
 
 
 
+    @Bean
+    public Queue infantMotherQueue(){
+
+        return new Queue(INFANTMOTHERARTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange infantMotherArtExchange(){
+
+        return new TopicExchange(INFANTMOTHERARTEXCHANGE);
+    }
+
+    @Bean
+    public Binding infantMotherArtBinding(Queue infantMotherQueue, TopicExchange infantMotherArtExchange){
+
+        return BindingBuilder.bind(infantMotherQueue).to(infantMotherArtExchange).with(INFANTMOTHERARTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    @Bean
+    public Queue infantPcrTestQueue(){
+
+        return new Queue(INFANTPCRTESTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange infantPcrTestExchange(){
+
+        return new TopicExchange(INFANTPCRTESTEXCHANGE);
+    }
+
+    @Bean
+    public Binding infantPcrTestBinding(Queue infantPcrTestQueue, TopicExchange infantPcrTestExchange){
+
+        return BindingBuilder.bind(infantPcrTestQueue).to(infantPcrTestExchange).with(INFANTPCRTESTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
+    @Bean
+    public Queue infantVisitQueue(){
+
+        return new Queue(INFANTVISITQUEUE);
+    }
+
+    @Bean
+    public TopicExchange infantVisitExchange(){
+
+        return new TopicExchange(INFANTVISITEXCHANGE);
+    }
+
+    @Bean
+    public Binding infantVisitBinding(Queue infantVisitQueue, TopicExchange infantVisitExchange){
+
+        return BindingBuilder.bind(infantVisitQueue).to(infantVisitExchange).with(INFANTVISITROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    @Bean
+    public Queue pmtctVisitQueue(){
+
+        return new Queue(PMTCTVISITQUEUE);
+    }
+
+    @Bean
+    public TopicExchange pmtctVisitExchange(){
+
+        return new TopicExchange(PMTCTVISITEXCHANGE);
+    }
+
+    @Bean
+    public Binding pmtctVisitBinding(Queue pmtctVisitQueue, TopicExchange pmtctVisitExchange){
+
+        return BindingBuilder.bind(pmtctVisitQueue).to(pmtctVisitExchange).with(PMTCTVISITROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    @Bean
+    public Queue prepEligibilityQueue(){
+
+        return new Queue(PREPELIGIBILITYQUEUE);
+    }
+
+    @Bean
+    public TopicExchange prepEligibilityExchange(){
+
+        return new TopicExchange(PREPELIGIBILITYEXCHANGE);
+    }
+
+    @Bean
+    public Binding prepEligibilityBinding(Queue prepEligibilityQueue, TopicExchange prepEligibilityExchange){
+
+        return BindingBuilder.bind(prepEligibilityQueue).to(prepEligibilityExchange).with(PREPELIGIBILITYROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    @Bean
+    public Queue prepEnrollmentQueue(){
+
+        return new Queue(PREPENROLLMENTQUEUE);
+    }
+
+    @Bean
+    public TopicExchange prepEnrollmentExchange(){
+
+        return new TopicExchange(PREPENROLLMENTEXCHANGE);
+    }
+
+    @Bean
+    public Binding prepEnrollmentBinding(Queue prepEnrollmentQueue, TopicExchange prepEnrollmentExchange){
+
+        return BindingBuilder.bind(prepEnrollmentQueue).to(prepEnrollmentExchange).with(PREPENROLLMENTROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+    @Bean
+    public Queue prepClinicQueue(){
+
+        return new Queue(PREPCLINICQUEUE);
+    }
+
+    @Bean
+    public TopicExchange prepClinicExchange(){
+
+        return new TopicExchange(PREPCLINICEXCHANGE);
+    }
+
+    @Bean
+    public Binding prepClinicBinding(Queue prepClinicQueue, TopicExchange prepClinicExchange){
+
+        return BindingBuilder.bind(prepClinicQueue).to(prepClinicExchange).with(PREPCLINICROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    @Bean
+    public Queue prepInterruptionQueue(){
+
+        return new Queue(PREPINTERRUPTIONQUEUE);
+    }
+
+    @Bean
+    public TopicExchange prepInterrptionExchange(){
+
+        return new TopicExchange(PREPINTERRUPTIONEXCHANGE);
+    }
+
+    @Bean
+    public Binding prepInterruptionBinding(Queue prepInterruptionQueue, TopicExchange prepInterrptionExchange){
+
+        return BindingBuilder.bind(prepInterruptionQueue).to(prepInterrptionExchange).with(PREPINTERRUPTIONROUTINGKEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+    @Bean
+    public Queue patientEncounterQueue(){
+
+        return new Queue(PATIENTENCOUNTERQUEUE);
+    }
+
+    @Bean
+    public TopicExchange patientEncounterExchange(){
+
+        return new TopicExchange(PATIENTENCOUNTEREXCHANGE);
+    }
+
+    @Bean
+    public Binding patientEncounterBinding(Queue patientEncounterQueue, TopicExchange patientEncounterExchange){
+
+        return BindingBuilder.bind(patientEncounterQueue).to(patientEncounterExchange).with(PATIENTENCOUNTERROUTING_KEY);
+
+    }
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     @Bean

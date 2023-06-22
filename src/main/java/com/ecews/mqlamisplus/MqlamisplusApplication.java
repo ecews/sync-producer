@@ -5,9 +5,11 @@ import com.ecews.mqlamisplus.Repository.hivrepo.ArtClinicalRepo;
 import com.ecews.mqlamisplus.Repository.hivrepo.HIVStatusTrackerRepo;
 import com.ecews.mqlamisplus.Repository.hts.HtsClientRepo;
 import com.ecews.mqlamisplus.Repository.lims.LIMManifestSRepo;
+import com.ecews.mqlamisplus.Repository.pmtc.InfantPCRTestRepo;
 import com.ecews.mqlamisplus.Repository.pmtc.PmtctEnrollmentRepo;
 import com.ecews.mqlamisplus.config.MessagingConfig;
 
+import com.ecews.mqlamisplus.models.Person.Encounter;
 import com.ecews.mqlamisplus.models.hts.IndexElicitation;
 import com.ecews.mqlamisplus.models.hts.RiskStratification;
 import com.ecews.mqlamisplus.models.laboratory.LabOrder;
@@ -17,10 +19,11 @@ import com.ecews.mqlamisplus.models.laboratory.Test;
 import com.ecews.mqlamisplus.models.lims.LIMSManifest;
 import com.ecews.mqlamisplus.models.lims.LIMSResult;
 import com.ecews.mqlamisplus.models.lims.LIMSSample;
-import com.ecews.mqlamisplus.models.pmtc.ANC;
-import com.ecews.mqlamisplus.models.pmtc.Delivery;
-import com.ecews.mqlamisplus.models.pmtc.InfantArv;
-import com.ecews.mqlamisplus.models.pmtc.PMTCTEnrollment;
+import com.ecews.mqlamisplus.models.pmtc.*;
+import com.ecews.mqlamisplus.models.prep.PrepClinic;
+import com.ecews.mqlamisplus.models.prep.PrepEligibility;
+import com.ecews.mqlamisplus.models.prep.PrepEnrollment;
+import com.ecews.mqlamisplus.models.prep.PrepInterruption;
 import com.ecews.mqlamisplus.service.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,6 +150,43 @@ public class MqlamisplusApplication implements ApplicationRunner {
 
 	@Autowired
 	private InfantArvService infantArvService;
+
+	@Autowired
+	private InfantMotherArtService infantMotherArtService;
+
+	@Autowired
+	private InfantPCRTestService infantPCRTestService;
+
+	@Autowired
+	private InfantPCRTestRepo infantPCRTestRepo;
+
+	@Autowired
+	private  InfantVisitService infantVisitService;
+
+	@Autowired
+	private  PmtctVisitService pmtctVisitService;
+
+	@Autowired
+	private PrepEligibilityService prepEligibilityService;
+
+	@Autowired
+	private PrepEnrollmentService prepEnrollmentService;
+
+	@Autowired
+	private PrepClinicService prepClinicService;
+
+	@Autowired
+	private PrepInterruptionService prepInterruptionService;
+
+
+	@Autowired
+	private EncounterService encounterService;
+
+
+
+
+
+
 
 
 
@@ -786,22 +826,215 @@ public class MqlamisplusApplication implements ApplicationRunner {
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		List<InfantArv> infantArvs = infantArvService.getInfantArvLamisPlusDb();
+//		List<InfantArv> infantArvs = infantArvService.getInfantArvLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ infantArvs.size()+ " InfantArv in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (InfantArv infantArv : infantArvs) {
+//
+//			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed" +infantArv.getUuid());
+//		}
+//
+//		for (InfantArv infantArv : infantArvs){
+//
+//			template.convertAndSend(MessagingConfig.INFANTARVEXCHANGE, MessagingConfig.INFANTARVROUTINGKEY,infantArv);
+//
+//			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed " +infantArv.getUuid());
+//		}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//
+//		List<InfantMotherArt> infantMotherArts = infantMotherArtService.getInfanMothertArtLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ infantMotherArts.size()+ " InfantMotherArt in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (InfantMotherArt infantMotherArt : infantMotherArts) {
+//
+//			System.out.println(">>>>>>>>>>>>> infantMotherArts is being Printed" +infantMotherArt.getUuid());
+//		}
+//
+//		for (InfantMotherArt infantMotherArt : infantMotherArts){
+//
+//			template.convertAndSend(MessagingConfig.INFANTMOTHERARTEXCHANGE, MessagingConfig.INFANTMOTHERARTROUTINGKEY,infantMotherArt);
+//
+//			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed " +infantMotherArt.getUuid());
+//		}
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<InfantPCRTest> infantPCRTests = infantPCRTestService.getInfantPCRTestLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ infantPCRTests.size()+ " InfantPCRTest in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (InfantPCRTest infantPCRTest : infantPCRTests) {
+//
+//			System.out.println(">>>>>>>>>>>>> infantPCRTests is being Printed" +infantPCRTest.getUuid());
+//		}
+//
+//		for (InfantPCRTest infantPCRTest : infantPCRTests){
+//
+//			template.convertAndSend(MessagingConfig.INFANTMOTHERARTEXCHANGE, MessagingConfig.INFANTMOTHERARTROUTINGKEY,infantPCRTest);
+//
+//			System.out.println(">>>>>>>>>>>>> infantPCRTests is being Printed " +infantPCRTest.getUuid());
+//		}
+
+
+//		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<InfantVisit> infantVisits = infantVisitService.getInfantVisitServiceLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ infantVisits.size()+ " infantVisits in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (InfantVisit infantVisit : infantVisits) {
+//
+//			System.out.println(">>>>>>>>>>>>> InfantVisit is being Printed" +infantVisit.getUuid());
+//		}
+//
+//		for (InfantVisit infantVisit : infantVisits){
+//
+//			template.convertAndSend(MessagingConfig.INFANTMOTHERARTEXCHANGE, MessagingConfig.INFANTMOTHERARTROUTINGKEY,infantVisit);
+//
+//			System.out.println(">>>>>>>>>>>>> InfantVisit is being Printed " +infantVisit.getUuid());
+//		}
+
+
+//		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<PmtctVisit> pmtctVisits = pmtctVisitService.getPmtctVisitServiceLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ pmtctVisits.size()+ " PmtctVisit in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PmtctVisit pmtctVisit : pmtctVisits) {
+//
+//			System.out.println(">>>>>>>>>>>>> PmtctVisit is being Printed" +pmtctVisit.getUuid());
+//		}
+//
+//		for (PmtctVisit pmtctVisit : pmtctVisits){
+//
+//			template.convertAndSend(MessagingConfig.PMTCTVISITEXCHANGE, MessagingConfig.PMTCTVISITROUTINGKEY,pmtctVisit);
+//
+//			System.out.println(">>>>>>>>>>>>> PmtctVisit is being Printed " +pmtctVisit.getUuid());
+//		}
 
 
 
-		System.out.println("There are "+ infantArvs.size()+ " InfantArv in the Db");
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//		List<PrepEligibility> prepEligibilities = prepEligibilityService.getPrepEligibilityFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ prepEligibilities.size()+ " PrepEligibility in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PrepEligibility prepEligibility : prepEligibilities) {
+//
+//			System.out.println(">>>>>>>>>>>>> PrepEligibility is being Printed" +prepEligibility.getUuid());
+//		}
+//
+//		for (PrepEligibility prepEligibility : prepEligibilities){
+//
+//			template.convertAndSend(MessagingConfig.PREPELIGIBILITYEXCHANGE, MessagingConfig.PREPELIGIBILITYROUTINGKEY,prepEligibility);
+//
+//			System.out.println(">>>>>>>>>>>>> PrepEligibility is being Printed " +prepEligibility.getUuid());
+//		}
+
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<PrepEnrollment> prepEnrollments = prepEnrollmentService.getPrepEnrollmentFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ prepEnrollments.size()+ " PrepEnrollment in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PrepEnrollment prepEnrollment : prepEnrollments) {
+//
+//			System.out.println(">>>>>>>>>>>>> PrepEnrollment is being Printed" +prepEnrollment.getDateCreated());
+//		}
+//
+//		for (PrepEnrollment prepEnrollment : prepEnrollments){
+//
+//			template.convertAndSend(MessagingConfig.PREPENROLLMENTEXCHANGE, MessagingConfig.PREPENROLLMENTROUTINGKEY,prepEnrollment);
+//
+//			System.out.println(">>>>>>>>>>>>> PrepEnrollment is being Printed " +prepEnrollment.getUuid());
+//		}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//		List<PrepClinic> prepClinics = prepClinicService.getPrepClinicFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ prepClinics.size()+ " PrepClinic in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PrepClinic prepClinic : prepClinics) {
+//
+//			System.out.println(">>>>>>>>>>>>> PrepClinic is being Printed" +prepClinic.getUuid());
+//		}
+//
+//		for (PrepClinic prepClinic : prepClinics){
+//
+//			template.convertAndSend(MessagingConfig.PREPENROLLMENTEXCHANGE, MessagingConfig.PREPENROLLMENTROUTINGKEY,prepClinic);
+//
+//			System.out.println(">>>>>>>>>>>>> PrepClinic is being Printed " +prepClinic.getUuid());
+//		}
+
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//		List<PrepInterruption> prepInterruptions = prepInterruptionService.getPrepClinicFromLamisPlusDb();
+//
+//
+//
+//		System.out.println("There are "+ prepInterruptions.size()+ " PrepClinic in the Db");
+//		// Do something with the retrieved LabOrders
+//		for (PrepInterruption prepInterruption : prepInterruptions) {
+//
+//			System.out.println(">>>>>>>>>>>>> PrepInterruption is being Printed" +prepInterruption.getUuid());
+//		}
+//
+//		for (PrepInterruption prepInterruption : prepInterruptions){
+//
+//			template.convertAndSend(MessagingConfig.PREPINTERRUPTIONEXCHANGE, MessagingConfig.PREPINTERRUPTIONROUTINGKEY,prepInterruption);
+//
+//			System.out.println(">>>>>>>>>>>>> PrepInterruption is being Printed " +prepInterruption.getUuid());
+//		}
+
+
+
+
+
+		List<Encounter> encounters = encounterService.getEncounterFromLamisPlusDb();
+
+
+
+		System.out.println("There are "+ encounters.size()+ " Encounter in the Db");
 		// Do something with the retrieved LabOrders
-		for (InfantArv infantArv : infantArvs) {
+		for (Encounter encounter : encounters) {
 
-			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed" +infantArv.getUuid());
+			System.out.println(">>>>>>>>>>>>> Encounter is being Printed" +encounter.getUuid());
 		}
 
-		for (InfantArv infantArv : infantArvs){
+		for (Encounter encounter : encounters){
 
-			template.convertAndSend(MessagingConfig.INFANTARVEXCHANGE, MessagingConfig.INFANTARVROUTINGKEY,infantArv);
+			template.convertAndSend(MessagingConfig.PREPINTERRUPTIONEXCHANGE, MessagingConfig.PREPINTERRUPTIONROUTINGKEY,encounter);
 
-			System.out.println(">>>>>>>>>>>>> InfantArv is being Printed " +infantArv.getUuid());
+			System.out.println(">>>>>>>>>>>>> Encounter is being Printed " +encounter.getUuid());
 		}
 	}
 
