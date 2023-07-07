@@ -1,8 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.VitalSign.VitalSignRepo;
-import com.ecews.mqlamisplus.models.Person.Person;
-import com.ecews.mqlamisplus.models.triage.VitalSign;
+import com.ecews.mqlamisplus.models.entities.triage.VitalSign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

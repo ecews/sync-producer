@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.hivrepo.ObservationRepo;
-import com.ecews.mqlamisplus.models.hiv.Observation;
+import com.ecews.mqlamisplus.models.entities.hiv.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

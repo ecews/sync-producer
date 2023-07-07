@@ -1,6 +1,6 @@
 //package com.ecews.mqlamisplus.Repository.DestinationRepo;
 //
-//import com.ecews.mqlamisplus.models.DestinationPerson.DestinationPerson;
+//import com.ecews.mqlamisplus.models.entities.DestinationPerson.DestinationPerson;
 //import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.ComponentScan;

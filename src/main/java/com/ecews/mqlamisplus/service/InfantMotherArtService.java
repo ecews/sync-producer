@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.pmtc.InfantMotherArtRepo;
-import com.ecews.mqlamisplus.models.pmtc.InfantMotherArt;
+import com.ecews.mqlamisplus.models.entities.pmtc.InfantMotherArt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

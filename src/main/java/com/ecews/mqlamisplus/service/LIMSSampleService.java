@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.lims.LIMSSampleRepo;
-import com.ecews.mqlamisplus.models.lims.LIMSSample;
+import com.ecews.mqlamisplus.models.entities.lims.LIMSSample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.pmtc.InfantPCRTestRepo;
-import com.ecews.mqlamisplus.models.pmtc.InfantPCRTest;
+import com.ecews.mqlamisplus.models.entities.pmtc.InfantPCRTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.pmtc.DeliveryRepo;
-import com.ecews.mqlamisplus.models.pmtc.Delivery;
+import com.ecews.mqlamisplus.models.entities.pmtc.Delivery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.laboratory.ResultRepo;
-import com.ecews.mqlamisplus.models.laboratory.Result;
+import com.ecews.mqlamisplus.models.entities.laboratory.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

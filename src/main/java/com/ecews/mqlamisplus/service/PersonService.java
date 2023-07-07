@@ -1,8 +1,8 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.PersonRepo.PersonRepo;
-import com.ecews.mqlamisplus.models.DestinationPerson.DestinationPerson;
-import com.ecews.mqlamisplus.models.Person.Person;
+import com.ecews.mqlamisplus.models.entities.DestinationPerson.DestinationPerson;
+import com.ecews.mqlamisplus.models.entities.Person.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

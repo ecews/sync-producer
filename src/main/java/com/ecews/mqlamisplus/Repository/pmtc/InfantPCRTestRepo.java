@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.Repository.pmtc;
 
 
-import com.ecews.mqlamisplus.models.pmtc.InfantPCRTest;
+import com.ecews.mqlamisplus.models.entities.pmtc.InfantPCRTest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

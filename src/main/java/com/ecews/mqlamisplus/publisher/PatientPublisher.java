@@ -2,8 +2,8 @@ package com.ecews.mqlamisplus.publisher;
 
 
 import com.ecews.mqlamisplus.config.MessagingConfig;
-import com.ecews.mqlamisplus.models.Patient;
-import com.ecews.mqlamisplus.models.PatientStatus;
+import com.ecews.mqlamisplus.models.entities.Patient;
+import com.ecews.mqlamisplus.models.entities.PatientStatus;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

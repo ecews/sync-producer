@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.PatientTrackerRepo;
-import com.ecews.mqlamisplus.models.hiv.PatientTracker;
+import com.ecews.mqlamisplus.models.entities.hiv.PatientTracker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
