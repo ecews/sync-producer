@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.pmtc.PmtctVisitRepo;
-import com.ecews.mqlamisplus.models.pmtc.PmtctVisit;
+import com.ecews.mqlamisplus.entity.models.pmtc.PmtctVisit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

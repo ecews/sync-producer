@@ -5,8 +5,8 @@
 //import com.ecews.mqlamisplus.config.MessagingConfig;
 //import com.ecews.mqlamisplus.Repository.PatientRepo;
 //import com.ecews.mqlamisplus.Repository.PatientStatusRepo;
-//import com.ecews.mqlamisplus.models.DestinationPerson.DestinationPerson;
-//import com.ecews.mqlamisplus.models.Person.Person;
+//import com.ecews.mqlamisplus.entity.DestinationPerson.models.DestinationPerson;
+//import com.ecews.mqlamisplus.entity.Person.models.Person;
 //import com.ecews.mqlamisplus.service.PersonService;
 //import org.springframework.amqp.rabbit.annotation.RabbitListener;
 //import org.springframework.beans.factory.annotation.Autowired;

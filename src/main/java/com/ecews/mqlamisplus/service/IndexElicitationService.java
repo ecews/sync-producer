@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.hts.IndexElicitationRepo;
-import com.ecews.mqlamisplus.models.hts.IndexElicitation;
+import com.ecews.mqlamisplus.entity.models.hts.IndexElicitation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

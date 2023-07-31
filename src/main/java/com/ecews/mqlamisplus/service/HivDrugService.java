@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.hivrepo.HivDrugRepo;
-import com.ecews.mqlamisplus.models.hiv.HIVDrug;
+import com.ecews.mqlamisplus.entity.models.hiv.HIVDrug;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.laboratory.SampleRepo;
-import com.ecews.mqlamisplus.models.laboratory.Sample;
+import com.ecews.mqlamisplus.entity.models.laboratory.Sample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

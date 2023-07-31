@@ -1,62 +1,38 @@
 package com.ecews.mqlamisplus.service;
 
-import com.ecews.mqlamisplus.Repository.PersonRepo.PersonRepo;
-import com.ecews.mqlamisplus.models.DestinationPerson.DestinationPerson;
-import com.ecews.mqlamisplus.models.Person.Person;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.blazebit.persistence.CriteriaBuilderFactory;
+import com.blazebit.persistence.view.EntityViewManager;
+import com.blazebit.persistence.view.EntityViewSetting;
+import com.ecews.mqlamisplus.entity.models.Person.Person;
+import com.ecews.mqlamisplus.entity.views.PersonView;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PersonService {
+    public final EntityManager em;
+    public final CriteriaBuilderFactory cbf;
+    private final EntityViewManager evm;
 
-    @Autowired
-    private PersonRepo personRepo;
-    public DestinationPerson convertPersonToPersonCopy(Person person) {
-        DestinationPerson destinationPerson = new DestinationPerson();
-        destinationPerson.setId(person.getId());
-        destinationPerson.setActive(person.getActive());
-        destinationPerson.setContactPoint(person.getContactPoint());
-        destinationPerson.setAddress(person.getAddress());
-        destinationPerson.setGender(person.getGender());
-        destinationPerson.setIdentifier(person.getIdentifier());
-        destinationPerson.setDeceased(person.getDeceased());
-        destinationPerson.setDeceasedDateTime(person.getDeceasedDateTime());
-        destinationPerson.setMaritalStatus(person.getMaritalStatus());
-        destinationPerson.setEmploymentStatus(person.getEmploymentStatus());
-        destinationPerson.setEducation(person.getEducation());
-        destinationPerson.setSex(person.getSex());
-        destinationPerson.setOrganization(person.getOrganization());
-        destinationPerson.setContact(person.getContact());
-        destinationPerson.setDateOfBirth(person.getDateOfBirth());
-        destinationPerson.setDateOfRegistration(person.getDateOfRegistration());
-        destinationPerson.setArchived(person.getArchived());
-        destinationPerson.setNinNumber(person.getNinNumber());
-        destinationPerson.setEmrId(person.getEmrId());
-        destinationPerson.setUuid(person.getUuid());
-        destinationPerson.setFirstName(person.getFirstName());
-        destinationPerson.setSurname(person.getSurname());
-        destinationPerson.setOtherName(person.getOtherName());
-        destinationPerson.setHospitalNumber(person.getHospitalNumber());
-        destinationPerson.setIsDateOfBirthEstimated(person.getIsDateOfBirthEstimated());
-        destinationPerson.setFullName(person.getFullName());
-
-        // Set PersonAuditEntity properties
-        destinationPerson.setCreatedDate(person.getCreatedDate());
-        destinationPerson.setCreatedBy(person.getCreatedBy());
-        destinationPerson.setLastModifiedDate(person.getLastModifiedDate());
-        destinationPerson.setLastModifiedBy(person.getLastModifiedBy());
-        destinationPerson.setFacilityId(person.getFacilityId());
-
-        return destinationPerson;
+    public PersonService(EntityManager em, CriteriaBuilderFactory cbf, EntityViewManager evm) {
+        this.em = em;
+        this.cbf = cbf;
+        this.evm = evm;
     }
 
 
-    public List<Person> getAllPersonsFromLamisPlusDb(){
+    public List<PersonView> getAllPerson() {
+        var settings = EntityViewSetting.create(PersonView.class);
+        var cb = cbf.create(em, PersonView.class)
+                .from(Person.class)
+                .orderByAsc("id");
+        return evm.applySetting(settings, cb).getResultList();
 
-        List<Person> persons = personRepo.findAll();
-
-        return persons;
+        //.withCountQuery(false).getResultList();
+        // return patientRepository.findByLastModifiedGreaterThan(patientMaxTime);
     }
 }

@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.prep.PrepEnrollmentRepo;
-import com.ecews.mqlamisplus.models.prep.PrepEnrollment;
+import com.ecews.mqlamisplus.entity.models.prep.PrepEnrollment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

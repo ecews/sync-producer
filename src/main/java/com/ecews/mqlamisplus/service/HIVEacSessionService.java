@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.hivrepo.HIVEacSessionRepo;
-import com.ecews.mqlamisplus.models.hiv.HIVEacSession;
+import com.ecews.mqlamisplus.entity.models.hiv.HIVEacSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
