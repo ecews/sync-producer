@@ -15,6 +15,9 @@ public class VisitService {
     @Autowired
     VisitRepo visitRepo;
 
+
+
+
     public List<Visit> getAllVisitsFromLamisPlusDb(){
 
 

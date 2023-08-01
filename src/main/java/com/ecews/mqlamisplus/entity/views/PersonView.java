@@ -5,10 +5,16 @@ import com.blazebit.persistence.view.IdMapping;
 import com.blazebit.persistence.view.Mapping;
 import com.ecews.mqlamisplus.entity.models.Person.Person;
 import com.ecews.mqlamisplus.entity.models.hiv.ARTClinical;
-import com.ecews.mqlamisplus.entity.views.hiv.ArtClinicalView;
-import com.ecews.mqlamisplus.entity.views.hiv.ArtPharmacyView;
-import com.ecews.mqlamisplus.entity.views.hiv.HIVEacView;
-import com.ecews.mqlamisplus.entity.views.hiv.HivEnrollmentView;
+import com.ecews.mqlamisplus.entity.models.hiv.HIVEacSession;
+import com.ecews.mqlamisplus.entity.views.hiv.*;
+//import com.ecews.mqlamisplus.entity.views.hts.HtsClientView;
+import com.ecews.mqlamisplus.entity.views.hts.HtsClientView;
+import com.ecews.mqlamisplus.entity.views.hts.IndexElicitationView;
+import com.ecews.mqlamisplus.entity.views.hts.RiskStratificationView;
+import com.ecews.mqlamisplus.entity.views.prep.PrepClinicView;
+import com.ecews.mqlamisplus.entity.views.prep.PrepEligibilityView;
+import com.ecews.mqlamisplus.entity.views.prep.PrepEnrollmentView;
+import com.ecews.mqlamisplus.entity.views.prep.PrepInterruptionView;
 import com.ecews.mqlamisplus.entity.views.visit.VisitView;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.time.LocalDate;
@@ -106,6 +112,36 @@ public interface PersonView {
     List<ArtClinicalView> getArtClinical();
 
     List<HIVEacView> getHivEac();
+
+    List<EacOutComeView> getEacOutCome();
+
+    List<HIVEacSessionView> getHivEacSession();
+
+    List<ObservationView> getObservation();
+
+    List<HIVStatusTrackerView> getHivStatusTracker();
+
+   List<PatientTrackerView> getPatientTracker();
+
+    List<IndexElicitationView> getIndexElicitation();
+
+    List<HtsClientView> getHtsClient();
+
+    List<RiskStratificationView> getRiskStratification();
+
+    List<PrepEligibilityView> getPrepEligibility();
+
+    List<PrepEnrollmentView> getPrepEnrollment();
+
+    List<PrepClinicView> getPrepClinic();
+
+    List<PrepInterruptionView> getPrepInterruption();
+
+
+
+
+
+
 
 
 //

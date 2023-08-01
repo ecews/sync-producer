@@ -1,5 +1,6 @@
 package com.ecews.mqlamisplus.entity.models.pmtc;
 
+
 import com.ecews.mqlamisplus.utility.LocalDateTimeDeserializer;
 import com.ecews.mqlamisplus.utility.LocalDateTimeSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -13,55 +14,46 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "pmtct_mother_visitation",  schema = "public")
+@Table(name = "pmtct_infant_pcr",  schema = "public")
 @Data
 @NoArgsConstructor
-public class PmtctVisit implements Serializable, Persistable<Long>
-{
+
+public class InfantPCR implements Serializable, Persistable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-    private String ancNo;
-    private String hospitalNumber;
-    private String personUuid;
+
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDate visitDate;
+
+
+    private String infantHospitalNumber;
+    private String ancNumber;
+    private Long ageAtTest ;
+    private String testType;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDate dateSampleCollected ;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDate dateSampleSent;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDate dateResultReceivedAtFacility;
+
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDate dateResultReceivedByCaregiver;
+
+
+    private String results;
     private String uuid;
-    private String entryPoint;
-
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDate dateOfVisit;
-
-
-    private String fpCounseling;
-    private String fpMethod;
-    private String timeOfViralLoad;
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDate dateOfViralLoad;
-
-
-    private Integer gaOfViralLoad;
-    private Integer resultOfViralLoad;
-    private String dsd;
-    private String dsdOption;
-    private String dsdModel;
-    private String  maternalOutcome;
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDate dateOfMaternalOutcome;
-
-
-    private String visitStatus;
-    private String transferTo;
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDate nextAppointmentDate;
-
 
     @Override
     public Long getId() {
@@ -72,5 +64,5 @@ public class PmtctVisit implements Serializable, Persistable<Long>
     public boolean isNew() {
         return false;
     }
-
 }
+

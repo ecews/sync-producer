@@ -131,9 +131,9 @@ public class HtsClient extends Audit implements Serializable {
     @Column(name = "extra", columnDefinition = "jsonb")
     private Object extra;
 
-    @Basic
-    @Column(name = "person_uuid")
-    private String personUuid;
+//    @Basic
+//    @Column(name = "person_uuid")
+//    private String personUuid;
 
     @Basic
     @Column(name = "uuid")

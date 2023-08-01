@@ -6,13 +6,19 @@ import javax.persistence.*;
 
 import com.ecews.mqlamisplus.entity.models.PatientAuditEntity;
 import com.ecews.mqlamisplus.entity.models.biometric.Biometric;
-import com.ecews.mqlamisplus.entity.models.hiv.ARTClinical;
-import com.ecews.mqlamisplus.entity.models.hiv.ArtPharmacy;
+import com.ecews.mqlamisplus.entity.models.hiv.*;
 //import com.ecews.mqlamisplus.entity.models.hiv.HivEnrollment;
-import com.ecews.mqlamisplus.entity.models.hiv.HIVEac;
-import com.ecews.mqlamisplus.entity.models.hiv.HivEnrollment;
+import com.ecews.mqlamisplus.entity.models.hts.HtsClient;
+import com.ecews.mqlamisplus.entity.models.hts.IndexElicitation;
+import com.ecews.mqlamisplus.entity.models.hts.RiskStratification;
+import com.ecews.mqlamisplus.entity.models.prep.PrepClinic;
+import com.ecews.mqlamisplus.entity.models.prep.PrepEligibility;
+import com.ecews.mqlamisplus.entity.models.prep.PrepEnrollment;
+import com.ecews.mqlamisplus.entity.models.prep.PrepInterruption;
 import com.ecews.mqlamisplus.entity.models.visit.Visit;
+import com.ecews.mqlamisplus.entity.views.PersonView;
 import com.ecews.mqlamisplus.entity.views.hiv.HIVEacView;
+import com.ecews.mqlamisplus.entity.views.hiv.HIVStatusTrackerView;
 import com.ecews.mqlamisplus.utility.LocalDateDeserializer;
 import com.ecews.mqlamisplus.utility.LocalDateSerializer;
 import com.ecews.mqlamisplus.utility.LocalDateTimeDeserializer;
@@ -149,6 +155,46 @@ public class Person extends PatientAuditEntity implements Persistable, Serializa
 
     @OneToMany
     private List<HIVEac>  hivEac;
+
+    @OneToMany
+    private List<EacOutCome>  eacOutCome;
+
+
+    @OneToMany
+    private List<HIVEacSession>  hivEacSession;
+
+    @OneToMany
+    private List<Observation>  observation;
+
+    @OneToMany
+    private List<HIVStatusTracker>  hivStatusTracker;
+
+    @OneToMany
+    private List<PatientTracker>  patientTracker;
+
+
+    @OneToMany
+    private List<IndexElicitation>  indexElicitation;
+
+    @OneToMany
+    private List<HtsClient>  htsClient;
+
+    @OneToMany
+    private List<RiskStratification>  riskStratification;
+
+    @OneToMany
+    private List<PrepEligibility>  prepEligibility;
+
+    @OneToMany
+    private List<PrepEnrollment>  prepEnrollment;
+
+    @OneToMany
+    private List<PrepClinic>  prepClinic;
+
+    @OneToMany
+    private List<PrepInterruption> prepInterruption;
+
+
 
 
     @Override

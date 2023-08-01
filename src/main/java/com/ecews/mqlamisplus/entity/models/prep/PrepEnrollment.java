@@ -1,6 +1,7 @@
 package com.ecews.mqlamisplus.entity.models.prep;
 
 import com.ecews.mqlamisplus.entity.models.Person.Person;
+import com.ecews.mqlamisplus.entity.models.hiv.ArtPharmacy;
 import com.ecews.mqlamisplus.entity.models.hts.Audit;
 import com.ecews.mqlamisplus.entity.models.visit.Visit;
 import com.ecews.mqlamisplus.utility.LocalDateDeserializer;
@@ -24,6 +25,7 @@ import org.springframework.util.StringUtils;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -128,6 +130,10 @@ public class PrepEnrollment extends Audit implements Serializable {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "date_last_hiv_negative_test")
     private LocalDate dateOfLastHivNegativeTest;
+
+
+
+
 
     @PrePersist
     public void setFields(){
