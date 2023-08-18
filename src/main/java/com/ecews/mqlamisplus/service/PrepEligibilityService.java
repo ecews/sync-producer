@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.prep.PrepEligibilityRepo;
-import com.ecews.mqlamisplus.models.entities.prep.PrepEligibility;
+import com.ecews.mqlamisplus.entity.models.prep.PrepEligibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.hivrepo.ArtClinicalRepo;
-import com.ecews.mqlamisplus.models.entities.hiv.ARTClinical;
+import com.ecews.mqlamisplus.entity.models.hiv.ARTClinical;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

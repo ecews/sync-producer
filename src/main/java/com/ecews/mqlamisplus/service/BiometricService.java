@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.BiometricRepo.BiometricRepo;
-import com.ecews.mqlamisplus.models.entities.biometric.Biometric;
+import com.ecews.mqlamisplus.entity.models.biometric.Biometric;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

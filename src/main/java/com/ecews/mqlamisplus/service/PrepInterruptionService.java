@@ -2,7 +2,7 @@ package com.ecews.mqlamisplus.service;
 
 
 import com.ecews.mqlamisplus.Repository.prep.PrepInterruptionRepo;
-import com.ecews.mqlamisplus.models.entities.prep.PrepInterruption;
+import com.ecews.mqlamisplus.entity.models.prep.PrepInterruption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

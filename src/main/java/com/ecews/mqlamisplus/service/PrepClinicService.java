@@ -1,7 +1,7 @@
 package com.ecews.mqlamisplus.service;
 
 import com.ecews.mqlamisplus.Repository.prep.PrepClinicRepo;
-import com.ecews.mqlamisplus.models.entities.prep.PrepClinic;
+import com.ecews.mqlamisplus.entity.models.prep.PrepClinic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

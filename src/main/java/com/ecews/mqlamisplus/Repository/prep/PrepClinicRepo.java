@@ -1,6 +1,6 @@
 package com.ecews.mqlamisplus.Repository.prep;
 
-import com.ecews.mqlamisplus.models.entities.prep.PrepClinic;
+import com.ecews.mqlamisplus.entity.models.prep.PrepClinic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

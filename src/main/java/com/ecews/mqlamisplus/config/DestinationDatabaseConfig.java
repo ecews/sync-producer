@@ -1,4 +1,4 @@
-//package com.ecews.mqlamisplus.config;
+package com.ecews.mqlamisplus.config;//package com.ecews.mqlamisplus.config;
 //
 //import org.springframework.beans.factory.annotation.Qualifier;
 //import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;

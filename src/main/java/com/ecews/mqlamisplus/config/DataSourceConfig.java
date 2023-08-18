@@ -1,4 +1,4 @@
-//package com.ecews.mqlamisplus.config;
+package com.ecews.mqlamisplus.config;//package com.ecews.mqlamisplus.config;
 //
 //import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 //import org.springframework.beans.factory.annotation.Qualifier;
