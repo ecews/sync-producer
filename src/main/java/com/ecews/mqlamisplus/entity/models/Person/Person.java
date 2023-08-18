@@ -15,6 +15,7 @@ import com.ecews.mqlamisplus.entity.models.prep.PrepClinic;
 import com.ecews.mqlamisplus.entity.models.prep.PrepEligibility;
 import com.ecews.mqlamisplus.entity.models.prep.PrepEnrollment;
 import com.ecews.mqlamisplus.entity.models.prep.PrepInterruption;
+import com.ecews.mqlamisplus.entity.models.triage.VitalSign;
 import com.ecews.mqlamisplus.entity.models.visit.Visit;
 import com.ecews.mqlamisplus.entity.views.PersonView;
 import com.ecews.mqlamisplus.entity.views.hiv.HIVEacView;
@@ -143,35 +144,15 @@ public class Person extends PatientAuditEntity implements Persistable, Serializa
     @OneToMany
     private List<Biometric> biometric;
 
-    @OneToMany
-    private List<ArtPharmacy> artPharmacy;
-
-
-    @OneToMany
-    private List<HivEnrollment> hivEnrollment;
 
     @OneToMany
     private List<ARTClinical> artClinical;
 
-    @OneToMany
-    private List<HIVEac>  hivEac;
-
-    @OneToMany
-    private List<EacOutCome>  eacOutCome;
 
 
-    @OneToMany
-    private List<HIVEacSession>  hivEacSession;
-
-    @OneToMany
-    private List<Observation>  observation;
-
-    @OneToMany
-    private List<HIVStatusTracker>  hivStatusTracker;
-
-    @OneToMany
-    private List<PatientTracker>  patientTracker;
-
+//    @OneToMany
+//    private List<PatientTracker>  patientTracker;
+//
 
     @OneToMany
     private List<IndexElicitation>  indexElicitation;
@@ -186,13 +167,17 @@ public class Person extends PatientAuditEntity implements Persistable, Serializa
     private List<PrepEligibility>  prepEligibility;
 
     @OneToMany
-    private List<PrepEnrollment>  prepEnrollment;
-
-    @OneToMany
     private List<PrepClinic>  prepClinic;
 
     @OneToMany
     private List<PrepInterruption> prepInterruption;
+
+    @OneToMany
+    private List<VitalSign> vitalSign;
+
+
+
+
 
 
 

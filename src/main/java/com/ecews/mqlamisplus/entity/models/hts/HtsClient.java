@@ -277,16 +277,6 @@ public class HtsClient extends Audit implements Serializable {
 
 
 
-
-
-    @OneToMany(mappedBy = "htsClient")
-    @ToString.Exclude
-    @JsonIgnore
-    public List<IndexElicitation> indexElicitation;
-
-
-
-
     @OneToOne
     @JoinColumn(name = "risk_stratification_code", referencedColumnName = "code", insertable = false, updatable = false)
     private RiskStratification riskStratification;
@@ -313,5 +303,12 @@ public class HtsClient extends Audit implements Serializable {
 
     @Column(name = "other_drugs")
     private String otherDrugs;
+
+    @OneToMany
+    public List<IndexElicitation> indexElicitation;
+
+
+
+
 }
 

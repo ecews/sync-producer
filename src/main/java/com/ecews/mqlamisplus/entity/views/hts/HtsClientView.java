@@ -2,6 +2,7 @@ package com.ecews.mqlamisplus.entity.views.hts;
 
 
 import com.blazebit.persistence.view.EntityView;
+import com.blazebit.persistence.view.IdMapping;
 import com.blazebit.persistence.view.Mapping;
 import com.ecews.mqlamisplus.entity.models.Person.Person;
 import com.ecews.mqlamisplus.entity.models.hts.HtsClient;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @EntityView(HtsClient.class)
 public interface HtsClientView {
-    @Mapping("id")
+    @IdMapping
     Long getId();
 
     @Mapping("targetGroup")
@@ -168,4 +169,7 @@ public interface HtsClientView {
 
     @Mapping("otherDrugs")
     String getOtherDrugs();
+
+
+    List<IndexElicitationView> getIndexElicitation();
 }

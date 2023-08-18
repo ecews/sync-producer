@@ -6,8 +6,6 @@ import com.blazebit.persistence.view.Mapping;
 import com.ecews.mqlamisplus.entity.models.Person.Person;
 import com.ecews.mqlamisplus.entity.models.hiv.ARTClinical;
 import com.ecews.mqlamisplus.entity.models.hiv.HIVEacSession;
-import com.ecews.mqlamisplus.entity.models.hiv.Observation;
-import com.ecews.mqlamisplus.entity.models.triage.VitalSign;
 import com.ecews.mqlamisplus.entity.views.hiv.*;
 //import com.ecews.mqlamisplus.entity.views.hts.HtsClientView;
 import com.ecews.mqlamisplus.entity.views.hts.HtsClientView;
@@ -17,7 +15,6 @@ import com.ecews.mqlamisplus.entity.views.prep.PrepClinicView;
 import com.ecews.mqlamisplus.entity.views.prep.PrepEligibilityView;
 import com.ecews.mqlamisplus.entity.views.prep.PrepEnrollmentView;
 import com.ecews.mqlamisplus.entity.views.prep.PrepInterruptionView;
-import com.ecews.mqlamisplus.entity.views.triage.VitalSignView;
 import com.ecews.mqlamisplus.entity.views.visit.VisitView;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.time.LocalDate;
@@ -26,7 +23,7 @@ import java.util.List;
 
 
 @EntityView(Person.class)
-public interface PersonView {
+public interface PersonViewAllRelationships {
 
 
     @IdMapping
@@ -106,8 +103,17 @@ public interface PersonView {
 
     List<VisitView> getVisits();
 
+    List<BiometricView> getBiometric();
+
+
+    List<ArtClinicalView> getArtClinical();
+
+
+    List<IndexElicitationView> getIndexElicitation();
 
     List<HtsClientView> getHtsClient();
+
+    List<RiskStratificationView> getRiskStratification();
 
     List<PrepEligibilityView> getPrepEligibility();
 
@@ -115,25 +121,7 @@ public interface PersonView {
 
     List<PrepInterruptionView> getPrepInterruption();
 
-    List<ArtClinicalView> getArtClinical();
 
-    List<VitalSignView> getVitalSign();
-
-
-
-//    List<IndexElicitationView> getIndexElicitation();
-//
-
-//
-//    List<RiskStratificationView> getRiskStratification();
-//
-
-
-
-//
-
-//
-//
 
 
 
@@ -143,3 +131,4 @@ public interface PersonView {
 //
 
 }
+

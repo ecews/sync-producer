@@ -15,6 +15,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @Entity
@@ -55,6 +56,9 @@ public class VitalSign extends PatientAuditEntity implements Persistable<Long>, 
     @NotNull
     @Column(name = "uuid", nullable = false, unique = true, updatable = false)
     private String uuid;
+
+
+
 
     @Override
     public Long getId() {

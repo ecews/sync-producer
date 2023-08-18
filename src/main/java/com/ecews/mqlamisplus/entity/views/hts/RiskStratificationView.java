@@ -2,16 +2,23 @@ package com.ecews.mqlamisplus.entity.views.hts;
 
 
 import com.blazebit.persistence.view.EntityView;
+import com.blazebit.persistence.view.IdMapping;
 import com.blazebit.persistence.view.Mapping;
+import com.ecews.mqlamisplus.entity.models.hts.IndexElicitation;
 import com.ecews.mqlamisplus.entity.models.hts.RiskStratification;
 
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @EntityView(RiskStratification.class)
 public interface RiskStratificationView {
-    @Mapping("id")
+
+    @IdMapping
     Long getId();
+//    @Mapping("id")
+//    Long getId();
 
     @Mapping("age")
     int getAge();
@@ -51,6 +58,10 @@ public interface RiskStratificationView {
 
     @Mapping("facilityId")
     Long getFacilityId();
+
+
+    List<HtsClientView> getHtsClient();
+
 
 
     // Add the necessary mappings for any other associations or properties in the entity

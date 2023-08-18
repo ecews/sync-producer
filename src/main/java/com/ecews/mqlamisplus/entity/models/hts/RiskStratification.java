@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -90,6 +91,12 @@ public class RiskStratification extends Audit implements Serializable {
     @Basic
     @Column(name = "facility_id ")
     private Long facilityId;
+
+
+    @OneToMany
+    private List<HtsClient> htsClient;
+
+
 
     @PrePersist
     public void setFields(){
