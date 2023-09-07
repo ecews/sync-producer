@@ -1,6 +1,7 @@
 package com.ecews.mqlamisplus.entity.views;
 
 import com.blazebit.persistence.view.EntityView;
+import com.blazebit.persistence.view.FetchStrategy;
 import com.blazebit.persistence.view.IdMapping;
 import com.blazebit.persistence.view.Mapping;
 import com.ecews.mqlamisplus.entity.models.Person.Person;
@@ -19,14 +20,19 @@ import com.ecews.mqlamisplus.entity.views.prep.PrepEnrollmentView;
 import com.ecews.mqlamisplus.entity.views.prep.PrepInterruptionView;
 import com.ecews.mqlamisplus.entity.views.triage.VitalSignView;
 import com.ecews.mqlamisplus.entity.views.visit.VisitView;
+import com.ecews.mqlamisplus.utility.JsonNodeConverter;
 import com.fasterxml.jackson.databind.JsonNode;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
 @EntityView(Person.class)
-public interface PersonView {
+public interface PersonView extends Serializable {
 
 
     @IdMapping
@@ -35,7 +41,11 @@ public interface PersonView {
     @Mapping("active")
     Boolean active = false;
 
+
+
     @Mapping("contactPoint")
+//    @Convert(converter = JsonNodeConverter.class)
+//    @Column(columnDefinition = "jsonb")
     JsonNode getContactPoint();
 
     @Mapping("address")
@@ -104,19 +114,27 @@ public interface PersonView {
     @Mapping("fullName")
     String getFullName();
 
+
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<VisitView> getVisits();
 
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<HtsClientView> getHtsClient();
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<PrepEligibilityView> getPrepEligibility();
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<PrepClinicView> getPrepClinic();
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<PrepInterruptionView> getPrepInterruption();
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<ArtClinicalView> getArtClinical();
 
+    @Mapping(fetch = FetchStrategy.JOIN)
     List<VitalSignView> getVitalSign();
 
 
